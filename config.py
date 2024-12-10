@@ -1,4 +1,4 @@
-"""This file collect variables from .env file"""
+"""This file collects variables from the .env file."""
 
 from os import getenv
 from dotenv import load_dotenv

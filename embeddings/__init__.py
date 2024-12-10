@@ -1,1 +1,1 @@
-"""Text data from articles for embeddings"""
+"""Text data from articles for embeddings."""

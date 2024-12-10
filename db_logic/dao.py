@@ -3,7 +3,7 @@ from model import User
 
 class UserDAO:
     """
-    This class is 3rd layer, which works with a database only.
+    This class is the 3rd layer, which works with a database only.
 
     Methods of the class address to the database
     And get data from there
@@ -26,9 +26,9 @@ class UserDAO:
     def create(self, data):
         """
         Create new object of model
-        And put him to the database.
+        And put him in the database.
 
-        Returns created object.
+        Returns the created object.
         """
 
         user = User(**data)
@@ -41,7 +41,7 @@ class UserDAO:
     def update(self, user):
         """
         Put transferred object to the database
-        And update him by this way.
+        And update him in this way.
 
         Nothing returns.
         """

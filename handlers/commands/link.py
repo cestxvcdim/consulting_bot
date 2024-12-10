@@ -1,4 +1,4 @@
-"""Senf link on VK group after typing /link command"""
+"""Send a link on VK group after typing /link command"""
 
 from aiogram import types
 from loader import dp, bot

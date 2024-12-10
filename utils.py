@@ -1,12 +1,10 @@
-"""
-This file contains some useful functions and data.
-"""
+"""This file contains some useful functions and data."""
 
 from openai import OpenAI, OpenAIError
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-# all links that use in the project
+# All links that are used in the project.
 URLS = {
     'kc_base': 'https://xn--80adxqo3a.xn--p1ai/state/G_%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/E_%D0%9D%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0',
     'consulting_appointment': 'https://xn--80adxqo3a.xn--p1ai/#segment_30',
@@ -15,7 +13,7 @@ URLS = {
     'feedback_to_consultant': 'https://xn--80adxqo3a.xn--p1ai/review'
 }
 
-# all callback data that handle in the project after pressing buttons
+# All callback data that is handled in the project after pressing buttons.
 CB_DATA = {
     'allowance': 'Пособие для родителей',
     'article1': 'Агрессивный ребенок',
@@ -32,7 +30,7 @@ CB_DATA = {
 }
 
 def get_gpt_response(prompt: str, client: OpenAI) -> str:
-    '''
+    """
     Function, that gives two arguments:
     Prompt - User question/statement.
     Client - OpenAI client.
@@ -43,7 +41,7 @@ def get_gpt_response(prompt: str, client: OpenAI) -> str:
     :param prompt:
     :param client:
     :return str:
-    '''
+    """
     is_answered = False
     while not is_answered:
         try:
@@ -66,9 +64,9 @@ def get_gpt_response(prompt: str, client: OpenAI) -> str:
 
 
 def get_embedding(text, client):
-    '''
-    Function creates embedding based on given text and return it.
-    '''
+    """
+    Function creates embedding based on given text and returns it.
+    """
     embedding = client.embeddings.create(
       model="text-embedding-ada-002",
       input=text,
@@ -78,17 +76,17 @@ def get_embedding(text, client):
 
 
 def search_with_embeddings(query, texts, client):
-    '''
+    """
     Function searches the most relevant text based on cosine similarity of embeddings.
-    '''
-    # get embedding for query
+    """
+    # Get embedding for query.
     query_embedding = get_embedding(query, client)
     print(query_embedding)
 
-    # get embeddings for every given text.
+    # Get embeddings for every given text.
     text_embeddings = [get_embedding(text, client) for text in texts]
 
-    # calculate cosine similarity
+    # Calculate cosine similarity.
     similarities = cosine_similarity([query_embedding], text_embeddings)[0]
 
     # Find the best index of texts with maximum similarity.
@@ -96,7 +94,7 @@ def search_with_embeddings(query, texts, client):
     return texts[best_match_index], similarities[best_match_index]
 
 
-# Usage example
+# Usage example:
 
 # if __name__ == "__main__":
 #     texts = [

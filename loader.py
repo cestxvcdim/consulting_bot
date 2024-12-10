@@ -1,6 +1,4 @@
-"""
-Loading bot and dispatcher
-"""
+"""Loading bot and dispatcher."""
 
 import asyncio
 from aiogram import Bot, Dispatcher

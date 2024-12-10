@@ -1,4 +1,4 @@
-"""Send menu with options after typing /start command"""
+"""Send menu with options after typing /start command."""
 
 from aiogram.dispatcher.filters import CommandStart
 from aiogram import types

@@ -1,4 +1,4 @@
-"""Initializing a database"""
+"""File contains the init_db function."""
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -11,4 +11,5 @@ engine = create_engine(Config.db_path, connect_args={'check_same_thread': False}
 DBSession = sessionmaker(bind=engine)
 
 def init_db():
+    """Initialize the database with requirement fields."""
     Base.metadata.create_all(engine)

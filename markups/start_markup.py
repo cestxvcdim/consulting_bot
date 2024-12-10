@@ -3,7 +3,7 @@ from utils import URLS
 
 
 def get():
-    """Creating inline keyboard of base menu"""
+    """Creating an inline keyboard of the base menu."""
     inline_kb = InlineKeyboardMarkup(row_width=1)
     inline_url_1 = InlineKeyboardButton('Нормативно-правовая база КЦ', url=URLS['kc_base'])
     inline_url_2 = InlineKeyboardButton('Запись на консультацию', url=URLS['consulting_appointment'])

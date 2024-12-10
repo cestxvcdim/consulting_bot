@@ -1,6 +1,4 @@
-"""
-Describing of User model in database.
-"""
+"""Describing User model in database."""
 
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import DeclarativeBase

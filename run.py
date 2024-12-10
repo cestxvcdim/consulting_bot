@@ -1,6 +1,4 @@
-"""
-This file is intended to collect all project and run it.
-"""
+"""This file is intended to collect the entire project and run it"""
 
 from aiogram import executor
 from db_logic.setup_db import init_db

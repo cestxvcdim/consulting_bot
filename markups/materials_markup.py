@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 def get():
-    """Creating inline keyboard for articles"""
+    """Creating an inline keyboard for articles."""
     inline_kb = InlineKeyboardMarkup(row_width=1)
     inline_btn_allowance = InlineKeyboardButton('Пособие для родителей', callback_data='allowance')
     inline_btn_article1 = InlineKeyboardButton('Агрессивный ребенок', callback_data='article1')

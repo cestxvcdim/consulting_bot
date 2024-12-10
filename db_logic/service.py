@@ -3,10 +3,10 @@ from db_logic.dao import UserDAO
 
 class UserService:
     """
-    This class is 2nd layer, which works with business-logic of the application.
+    This class is the 2nd layer, which works with business-logic of the application.
 
     Methods of the class handle a data
-    And give this to next layer.
+    And give this to the next layer.
     """
     def __init__(self, dao: UserDAO):
         """Defines DAO for working with database's session."""
@@ -19,12 +19,12 @@ class UserService:
         return self.dao.get_one(lid)
 
     def get_all(self):
-        """Returns all objects"""
+        """Returns all objects."""
 
         return self.dao.get_all()
 
     def create(self, data):
-        """Create new object of model."""
+        """Create a new object model"""
 
         return self.dao.create(data)
 
