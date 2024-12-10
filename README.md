@@ -10,5 +10,6 @@
 
 1) Clone project on your local PC.
 2) Install requirements.
-3) Run `test_run.py`
-4) Click to `@consulting_center_sova_bot` and press **start** button or type `/start`
+3) Put `.env` file in project with requirement secrets.
+4) Run `test_run.py`
+5) Click to `@consulting_center_sova_bot` and press **start** button or type `/start`
