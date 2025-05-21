@@ -9,7 +9,8 @@
 ### How to use?
 
 1) Clone project on your local PC.
-2) Install requirements.
-3) Put `.env` file in project with requirement secrets.
-4) Run `test_run.py`
-5) Click to `@consulting_center_sova_bot` and press **start** button or type `/start`
+2) Install requirements from requirements.txt .
+3) Put `.env` file in project with requirement secrets. You can view `.env.sample` .
+4) Run `docker compose up -d --build` in terminal.
+5) Open Telegram and type in the search line `@consulting_center_sova_bot` .
+6) Open bot and press **start** button or type `/start` .
