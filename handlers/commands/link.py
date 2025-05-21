@@ -1,11 +1,13 @@
 """Send a link on VK group after typing /link command"""
+from aiogram import Router
+from aiogram.filters import Command
+from aiogram.types import Message
 
-from aiogram import types
-from loader import dp, bot
+link_router = Router()
 
 
-@dp.message_handler(commands=['link'])
-async def send_link(message: types.Message):
+@link_router.message(Command('link'))
+async def get_link(message: Message) -> None:
     from markups import link_markup
 
-    await bot.send_message(message.chat.id, 'Родительская гостиная ВКонтакте', reply_markup=link_markup.get())
+    await message.answer('Родительская гостиная ВКонтакте', reply_markup=link_markup.get())

@@ -1,8 +1,14 @@
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import InlineKeyboardButton
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from settings import URLS
+
 
 def get():
     """Creating an inline keyboard for the general link of VK group."""
-    inline_kb = InlineKeyboardMarkup(row_width=1)
-    link = InlineKeyboardButton('Перейти по ссылке', url='https://vk.com/roditelgostinaya')
-    inline_kb.add(link)
-    return inline_kb
+    builder = InlineKeyboardBuilder()
+    builder.row(InlineKeyboardButton(
+        text='Перейти по ссылке',
+        url=URLS['VK_GROUP'])
+    )
+    return builder.as_markup()

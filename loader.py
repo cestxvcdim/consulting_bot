@@ -2,10 +2,11 @@
 
 import asyncio
 from aiogram import Bot, Dispatcher
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from config import Config
+from aiogram.fsm.storage.redis import RedisStorage
 
+from settings import BOT_TOKEN, REDIS_URL
 
-bot = Bot(token=Config.bot_token)
+bot = Bot(token=BOT_TOKEN)
 loop = asyncio.get_event_loop()
-dp = Dispatcher(bot, storage=MemoryStorage(), loop=loop)
+storage = RedisStorage.from_url(REDIS_URL)
+dp = Dispatcher(storage=storage, loop=loop)

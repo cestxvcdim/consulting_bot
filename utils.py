@@ -4,30 +4,6 @@ from openai import OpenAI, OpenAIError
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-# All links that are used in the project.
-URLS = {
-    'kc_base': 'https://xn--80adxqo3a.xn--p1ai/state/G_%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/E_%D0%9D%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B1%D0%B0%D0%B7%D0%B0',
-    'consulting_appointment': 'https://xn--80adxqo3a.xn--p1ai/#segment_30',
-    'portal': 'https://xn--80aidamjr3akke.xn--p1ai/',
-    'yandex_form': 'https://forms.yandex.ru/u/672e5bb584227c79f8f9cc95/',
-    'feedback_to_consultant': 'https://xn--80adxqo3a.xn--p1ai/review'
-}
-
-# All callback data that is handled in the project after pressing buttons.
-CB_DATA = {
-    'allowance': 'Пособие для родителей',
-    'article1': 'Агрессивный ребенок',
-    'article2': 'Давай дружить',
-    'article3': 'Дети и гаджеты',
-    'article4': 'Дизграфия',
-    'article5': 'Как воспитать в ребенке здоровую уверенность',
-    'article6': 'Как помочь подростку',
-    'article7': 'Мой ребенок готов к школе',
-    'article8': 'Причины самоповреждающего поведения',
-    'article9': 'Ребенок остро реагирует на критику',
-    'article10': 'Роль отца в воспитании девочки',
-    'article11': 'Что такое психосоматика'
-}
 
 def get_gpt_response(prompt: str, client: OpenAI) -> str:
     """
@@ -42,11 +18,11 @@ def get_gpt_response(prompt: str, client: OpenAI) -> str:
     :param client:
     :return str:
     """
-    is_answered = False
-    while not is_answered:
+    tries = 5
+    while tries:
         try:
             completion = client.chat.completions.create(
-                model='gpt-4o-mini',
+                model='gpt-4o',
                 max_tokens=500,
                 temperature=0.9,
                 messages=[
@@ -57,9 +33,13 @@ def get_gpt_response(prompt: str, client: OpenAI) -> str:
                     }
                 ]
             )
-            is_answered = True
+            break
         except OpenAIError:
+            tries -= 1
             continue
+
+    if not tries:
+        return 'В данный момент наш ассистент находится на техническом перерыве. Обратитесь в наш центр.'
     return completion.choices[0].message.content
 
 
